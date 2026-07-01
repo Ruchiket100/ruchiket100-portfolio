@@ -2,6 +2,7 @@ import { db } from "@/lib/firebase";
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import Link from "next/link";
+import TransitionLink from "@/components/transition-link";
 import MarkdownRenderer from "@/components/markdown-renderer";
 import TableOfContents from "@/components/table-of-contents";
 import { FieldValue } from "firebase-admin/firestore";
@@ -117,12 +118,12 @@ export default async function BlogPostPage({
 				<div className="col-start-2 row-start-1">
 					{/* Header */}
 					<nav className="flex items-center justify-between px-4 py-3 border-b border-b-(--pattern-fg)">
-						<Link
+						<TransitionLink
 							href="/blog"
 							className="text-sm font-medium hover:underline underline-offset-4"
 						>
 							← All Posts
-						</Link>
+						</TransitionLink>
 					</nav>
 
 					{/* Post Header */}

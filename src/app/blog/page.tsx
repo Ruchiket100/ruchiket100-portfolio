@@ -1,6 +1,7 @@
 import { db } from "@/lib/firebase";
 import type { Metadata } from "next";
 import Link from "next/link";
+import TransitionLink from "@/components/transition-link";
 import BlogListClient from "./blog-list-client";
 
 export const metadata: Metadata = {
@@ -58,12 +59,12 @@ export default async function BlogPage() {
 				<div className="col-start-2 row-start-1">
 					{/* Header */}
 					<nav className="flex items-center justify-between px-4 py-3 border-b border-b-(--pattern-fg)">
-						<Link
+						<TransitionLink
 							href="/"
 							className="text-sm font-medium hover:underline underline-offset-4"
 						>
 							← Back
-						</Link>
+						</TransitionLink>
 						<span className="text-sm font-medium">Blog</span>
 					</nav>
 

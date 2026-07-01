@@ -9,6 +9,7 @@ import ContactForm from "@/components/contact-form";
 import BlogCard from "@/components/blog-card";
 import { db } from "@/lib/firebase";
 import Link from "next/link";
+import TransitionLink from "@/components/transition-link";
 
 async function getLatestPosts() {
 	try {
@@ -52,7 +53,7 @@ export default async function Home() {
 								<a href="#projects" className="hover:underline underline-offset-4">Projects</a>
 							</li>
 							<li>
-								<Link href="/blog" className="hover:underline underline-offset-4">Blog</Link>
+								<TransitionLink href="/blog" className="hover:underline underline-offset-4">Blog</TransitionLink>
 							</li>
 							<li>
 								<a href="#contact" className="hover:underline underline-offset-4">Contact</a>
@@ -220,12 +221,12 @@ export default async function Home() {
 								{latestPosts.map((post) => (
 									<BlogCard key={post.slug} {...post} />
 								))}
-								<Link
+								<TransitionLink
 									href="/blog"
 									className="text-sm text-center py-2 border border-gray-300 hover:border-gray-900 hover:bg-gray-50 transition-all block"
 								>
 									View all posts →
-								</Link>
+								</TransitionLink>
 							</>
 						) : (
 							<p className="text-sm text-gray-500 py-4 text-center">

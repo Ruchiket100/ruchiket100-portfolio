@@ -1,4 +1,4 @@
-import Link from "next/link";
+import TransitionLink from "./transition-link";
 
 interface BlogCardProps {
 	slug: string;
@@ -28,7 +28,7 @@ export default function BlogCard({
 		: "";
 
 	return (
-		<Link href={`/blog/${slug}`} className="group block">
+		<TransitionLink href={`/blog/${slug}`} className="group block">
 			<article className="border border-gray-300 hover:border-gray-900 transition-all duration-200 group-hover:-translate-y-0.5">
 				<div className="p-4 flex flex-col gap-3">
 					<div className="flex items-center gap-3 text-xs text-gray-500">
@@ -61,6 +61,6 @@ export default function BlogCard({
 					</div>
 				</div>
 			</article>
-		</Link>
+		</TransitionLink>
 	);
 }
