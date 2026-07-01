@@ -15,7 +15,7 @@ if (!client_id || !client_secret) {
 	process.exit(1);
 }
 
-const REDIRECT_URI = "http://localhost:3000";
+const REDIRECT_URI = process.env.SPOTIFY_REDIRECT_URI || "http://localhost:3000";
 const scope = "user-read-currently-playing";
 
 const authUrl = `https://accounts.spotify.com/authorize?client_id=${client_id}&response_type=code&redirect_uri=${encodeURIComponent(
