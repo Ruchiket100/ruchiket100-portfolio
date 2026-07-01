@@ -26,7 +26,7 @@ export async function GET() {
 		const isPlaying = song.is_playing;
 		const title = song.item.name;
 		const artist = song.item.artists.map((_artist: { name: string }) => _artist.name).join(", ");
-		const albumImageUrl = song.item.album.images[0].url;
+		const albumImageUrl = song.item.album.images?.[0]?.url || "";
 		const songUrl = song.item.external_urls.spotify;
 
 		return NextResponse.json(
