@@ -39,7 +39,7 @@ export default function SpotifyNowPlaying() {
 
 	if (loading) {
 		return (
-			<div className="flex items-center gap-2 text-xs font-sans text-zinc-400 dark:text-zinc-500 w-fit animate-pulse">
+			<div className="flex items-center gap-2 pl-2 pr-2.5 py-1 text-xs font-sans rounded-full border border-gray-200 dark:border-zinc-800 text-zinc-400 dark:text-zinc-500 w-fit animate-pulse">
 				<div className="w-1.5 h-1.5 rounded-full bg-zinc-300 dark:bg-zinc-700"></div>
 				<span className="hidden xs:inline">Connecting...</span>
 			</div>
@@ -48,7 +48,7 @@ export default function SpotifyNowPlaying() {
 
 	if (!song.isPlaying) {
 		return (
-			<div className="flex items-center gap-1.5 text-xs font-sans text-zinc-400 dark:text-zinc-500 w-fit select-none">
+			<div className="flex items-center gap-1.5 pl-2 pr-2.5 py-1 text-xs font-sans rounded-full border border-gray-200 dark:border-zinc-800 text-zinc-400 dark:text-zinc-500 w-fit select-none">
 				{/* Spotify Icon */}
 				<svg
 					width="14"
@@ -69,14 +69,14 @@ export default function SpotifyNowPlaying() {
 			href={song.songUrl || "#"}
 			target="_blank"
 			rel="noopener noreferrer"
-			className="group relative flex items-center gap-2.5 rounded-full border border-gray-300 dark:border-zinc-700 px-3 py-1.5 hover:border-black dark:hover:border-white transition-all duration-300 ease-in-out select-none w-fit max-w-[220px] sm:max-w-xs cursor-pointer"
+			className="group relative flex items-center gap-2 rounded-full border border-gray-300 dark:border-zinc-700 pl-2 pr-2.5 py-1 hover:border-black dark:hover:border-white transition-all duration-300 ease-in-out select-none w-fit max-w-[220px] sm:max-w-xs cursor-pointer"
 		>
 			<style>{`
 				@keyframes eq-bar-1 { 0%, 100% { transform: scaleY(0.2); } 50% { transform: scaleY(1); } }
 				@keyframes eq-bar-2 { 0%, 100% { transform: scaleY(0.4); } 50% { transform: scaleY(1.2); } }
 				@keyframes eq-bar-3 { 0%, 100% { transform: scaleY(0.1); } 50% { transform: scaleY(0.9); } }
 				@keyframes eq-bar-4 { 0%, 100% { transform: scaleY(0.3); } 50% { transform: scaleY(1.1); } }
-				.eq-bar { transform-origin: bottom; }
+				.eq-bar { transform-origin: center; }
 				.eq-bar-1 { animation: eq-bar-1 0.8s ease-in-out infinite; }
 				.eq-bar-2 { animation: eq-bar-2 0.6s ease-in-out infinite; }
 				.eq-bar-3 { animation: eq-bar-3 0.7s ease-in-out infinite; }
@@ -99,18 +99,18 @@ export default function SpotifyNowPlaying() {
 			</div>
 
 			{/* Song Metadata (Single-line styling) */}
-			<div className="flex items-center gap-1.5 text-xs font-sans min-w-0 text-black">
-				<span className="font-bold text-black truncate max-w-[80px] sm:max-w-[120px] group-hover:text-[#1DB954] transition-colors">
+			<div className="flex items-center gap-1.5 text-xs font-sans min-w-0 text-black leading-none">
+				<span className="font-bold text-black truncate max-w-[80px] sm:max-w-[120px] group-hover:text-[#1DB954] transition-colors leading-none">
 					{song.title}
 				</span>
-				<span className="text-black shrink-0">•</span>
-				<span className="text-zinc-700 truncate max-w-[70px] sm:max-w-[100px]">
+				<span className="text-black shrink-0 leading-none">•</span>
+				<span className="text-zinc-700 truncate max-w-[70px] sm:max-w-[100px] leading-none">
 					{song.artist}
 				</span>
 			</div>
 
 			{/* Live Equalizer Animation */}
-			<div className="flex items-end gap-[1.5px] h-2.5 w-3.5 shrink-0 text-[#1DB954]/80">
+			<div className="flex items-center gap-[1.5px] h-3 w-3.5 shrink-0 text-[#1DB954]/80">
 				<span
 					className="eq-bar eq-bar-1 w-[1.5px] h-2.5 bg-current rounded-full"
 					style={{ animationDelay: "0.15s" }}
