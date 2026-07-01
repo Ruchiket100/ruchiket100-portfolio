@@ -69,7 +69,7 @@ export default function SpotifyNowPlaying() {
 			href={song.songUrl || "#"}
 			target="_blank"
 			rel="noopener noreferrer"
-			className="group relative flex items-center gap-2 rounded-full border border-gray-300 dark:border-zinc-700 pl-2 pr-2.5 py-1 hover:border-black dark:hover:border-white transition-all duration-300 ease-in-out select-none w-fit max-w-[220px] sm:max-w-xs cursor-pointer"
+			className="group relative flex items-center gap-2 rounded-full border border-gray-300 dark:border-zinc-700 pl-2 pr-2.5 py-1 hover:border-black dark:hover:border-white hover:bg-zinc-50 dark:hover:bg-zinc-900/30 transition-all duration-200 ease-in-out select-none w-fit max-w-[220px] sm:max-w-xs cursor-pointer"
 		>
 			<style>{`
 				@keyframes eq-bar-1 { 0%, 100% { transform: scaleY(0.2); } 50% { transform: scaleY(1); } }
@@ -100,7 +100,7 @@ export default function SpotifyNowPlaying() {
 
 			{/* Song Metadata (Single-line styling) */}
 			<div className="flex items-center gap-1.5 text-xs font-sans min-w-0 text-black leading-none">
-				<span className="font-bold text-black truncate max-w-[80px] sm:max-w-[120px] group-hover:text-[#1DB954] transition-colors leading-none">
+				<span className="font-bold text-black truncate max-w-[80px] sm:max-w-[120px] leading-none">
 					{song.title}
 				</span>
 				<span className="text-black shrink-0 leading-none">•</span>
