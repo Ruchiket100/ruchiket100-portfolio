@@ -1,5 +1,7 @@
 "use client";
 
+import { useEffect, useState } from "react";
+import { usePathname } from "next/navigation";
 import TransitionLink from "./transition-link";
 import SpotifyNowPlaying from "./spotify-now-playing";
 
@@ -8,6 +10,63 @@ interface NavbarProps {
 }
 
 export default function Navbar({ isBlogPage = false }: NavbarProps) {
+	const pathname = usePathname();
+	const [activeSection, setActiveSection] = useState<string>("");
+
+	useEffect(() => {
+		if (pathname.startsWith("/blog")) {
+			setActiveSection("blog");
+			return;
+		}
+
+		if (pathname !== "/") {
+			setActiveSection("");
+			return;
+		}
+
+		const sections = ["about", "projects", "contact"];
+		const sectionElements = sections.map((id) => document.getElementById(id));
+
+		const observerOptions = {
+			root: null,
+			rootMargin: "-25% 0px -55% 0px",
+			threshold: 0,
+		};
+
+		const observer = new IntersectionObserver((entries) => {
+			entries.forEach((entry) => {
+				if (entry.isIntersecting) {
+					setActiveSection(entry.target.id);
+				}
+			});
+		}, observerOptions);
+
+		sectionElements.forEach((el) => {
+			if (el) observer.observe(el);
+		});
+
+		const handleScroll = () => {
+			if (window.scrollY < 150) {
+				setActiveSection("");
+			}
+		};
+		window.addEventListener("scroll", handleScroll);
+
+		return () => {
+			observer.disconnect();
+			window.removeEventListener("scroll", handleScroll);
+		};
+	}, [pathname]);
+
+	const getLinkClassName = (sectionId: string) => {
+		const isActive = activeSection === sectionId;
+		return `hover:underline underline-offset-4 transition-colors duration-200 ${
+			isActive
+				? "underline font-bold text-black dark:text-white"
+				: "text-zinc-500 hover:text-black dark:text-zinc-400 dark:hover:text-white"
+		}`;
+	};
+
 	return (
 		<nav
 			className={`flex items-center justify-between gap-4 px-4 py-3 ${
@@ -21,7 +80,7 @@ export default function Navbar({ isBlogPage = false }: NavbarProps) {
 					<li>
 						<a
 							href={isBlogPage ? "/#about" : "#about"}
-							className="hover:underline underline-offset-4"
+							className={getLinkClassName("about")}
 						>
 							About
 						</a>
@@ -29,7 +88,7 @@ export default function Navbar({ isBlogPage = false }: NavbarProps) {
 					<li>
 						<a
 							href={isBlogPage ? "/#projects" : "#projects"}
-							className="hover:underline underline-offset-4"
+							className={getLinkClassName("projects")}
 						>
 							Projects
 						</a>
@@ -37,7 +96,7 @@ export default function Navbar({ isBlogPage = false }: NavbarProps) {
 					<li>
 						<TransitionLink
 							href="/blog"
-							className="hover:underline underline-offset-4"
+							className={getLinkClassName("blog")}
 						>
 							Blog
 						</TransitionLink>
@@ -45,7 +104,7 @@ export default function Navbar({ isBlogPage = false }: NavbarProps) {
 					<li>
 						<a
 							href={isBlogPage ? "/#contact" : "#contact"}
-							className="hover:underline underline-offset-4"
+							className={getLinkClassName("contact")}
 						>
 							Contact
 						</a>
