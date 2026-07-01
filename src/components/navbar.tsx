@@ -12,6 +12,16 @@ interface NavbarProps {
 export default function Navbar({ isBlogPage = false }: NavbarProps) {
 	const pathname = usePathname();
 	const [activeSection, setActiveSection] = useState<string>("");
+	const [isScrolled, setIsScrolled] = useState(false);
+
+	useEffect(() => {
+		const handleScroll = () => {
+			setIsScrolled(window.scrollY > 10);
+		};
+		window.addEventListener("scroll", handleScroll);
+		handleScroll();
+		return () => window.removeEventListener("scroll", handleScroll);
+	}, []);
 
 	useEffect(() => {
 		if (pathname.startsWith("/blog")) {
@@ -45,16 +55,16 @@ export default function Navbar({ isBlogPage = false }: NavbarProps) {
 			if (el) observer.observe(el);
 		});
 
-		const handleScroll = () => {
+		const handleScrollSpy = () => {
 			if (window.scrollY < 150) {
 				setActiveSection("");
 			}
 		};
-		window.addEventListener("scroll", handleScroll);
+		window.addEventListener("scroll", handleScrollSpy);
 
 		return () => {
 			observer.disconnect();
-			window.removeEventListener("scroll", handleScroll);
+			window.removeEventListener("scroll", handleScrollSpy);
 		};
 	}, [pathname]);
 
@@ -69,8 +79,12 @@ export default function Navbar({ isBlogPage = false }: NavbarProps) {
 
 	return (
 		<nav
-			className={`flex items-center justify-between gap-4 px-4 py-3 ${
-				isBlogPage ? "border-b border-b-(--pattern-fg)" : ""
+			className={`sticky top-0 z-50 flex items-center justify-between gap-4 px-4 py-3 transition-all duration-300 ${
+				isScrolled
+					? "bg-white/70 dark:bg-zinc-950/70 backdrop-blur-md border-b border-b-(--pattern-fg)/30 shadow-sm"
+					: isBlogPage
+					? "border-b border-b-(--pattern-fg)"
+					: ""
 			}`}
 		>
 			<SpotifyNowPlaying />
