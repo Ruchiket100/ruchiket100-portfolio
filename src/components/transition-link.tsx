@@ -45,9 +45,9 @@ export default function TransitionLink({
 	return (
 		<>
 			{isPending && (
-				<div className="fixed inset-0 z-50 flex items-center justify-center bg-white/40 dark:bg-black/40 backdrop-blur-[1px] pointer-events-auto">
+				<div className="fixed inset-0 z-50 flex items-center justify-center bg-white/60 backdrop-blur-[1px] pointer-events-auto">
 					{/* Brutalist Rotating Square Loader */}
-					<div className="w-10 h-10 border-2 border-current animate-spin"></div>
+					<div className="w-10 h-10 border-2 border-black animate-spin"></div>
 				</div>
 			)}
 			<Link
