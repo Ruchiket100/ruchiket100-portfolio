@@ -79,12 +79,12 @@ export default function Navbar({ isBlogPage = false }: NavbarProps) {
 
 	return (
 		<nav
-			className={`sticky top-0 z-50 flex items-center justify-between gap-4 px-4 py-3 transition-all duration-300 ${
+			className={`sticky top-0 z-50 flex items-center justify-between gap-4 px-4 py-3 border-b transition-all duration-300 ${
 				isScrolled
-					? "backdrop-blur-md border-b border-b-(--pattern-fg)/30 shadow-sm"
+					? "backdrop-blur-md border-b-(--pattern-fg)/30 shadow-sm"
 					: isBlogPage
-					? "border-b border-b-(--pattern-fg)"
-					: ""
+					? "border-b-(--pattern-fg)"
+					: "border-b-transparent"
 			}`}
 		>
 			<SpotifyNowPlaying />
