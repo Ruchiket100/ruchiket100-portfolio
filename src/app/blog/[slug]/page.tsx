@@ -6,6 +6,7 @@ import TransitionLink from "@/components/transition-link";
 import MarkdownRenderer from "@/components/markdown-renderer";
 import TableOfContents from "@/components/table-of-contents";
 import BlogInteractions from "@/components/blog-interactions";
+import Navbar from "@/components/navbar";
 import { FieldValue } from "firebase-admin/firestore";
 
 interface BlogPostData {
@@ -120,14 +121,7 @@ export default async function BlogPostPage({
 
 				<div className="col-start-2 row-start-1">
 					{/* Header */}
-					<nav className="flex items-center justify-between px-4 py-3 border-b border-b-(--pattern-fg)">
-						<TransitionLink
-							href="/blog"
-							className="text-sm font-medium hover:underline underline-offset-4"
-						>
-							← All Posts
-						</TransitionLink>
-					</nav>
+					<Navbar isBlogPage={true} />
 
 					{/* Post Header */}
 					<header className="px-4 py-8 border-b border-dashed border-gray-300">
