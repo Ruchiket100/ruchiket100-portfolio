@@ -5,6 +5,7 @@ import Link from "next/link";
 import TransitionLink from "@/components/transition-link";
 import MarkdownRenderer from "@/components/markdown-renderer";
 import TableOfContents from "@/components/table-of-contents";
+import BlogInteractions from "@/components/blog-interactions";
 import { FieldValue } from "firebase-admin/firestore";
 
 interface BlogPostData {
@@ -13,6 +14,7 @@ interface BlogPostData {
 	content: string;
 	tags: string[];
 	views: number;
+	likes: number;
 	readingTime: number;
 	createdAt: string | null;
 	updatedAt: string | null;
@@ -41,6 +43,7 @@ async function getBlogPost(slug: string): Promise<BlogPostData | null> {
 			content: data.content,
 			tags: data.tags || [],
 			views: (data.views || 0) + 1,
+			likes: data.likes || 0,
 			readingTime: data.readingTime || 3,
 			createdAt: data.createdAt?.toDate?.()?.toISOString() || null,
 			updatedAt: data.updatedAt?.toDate?.()?.toISOString() || null,
@@ -160,6 +163,7 @@ export default async function BlogPostPage({
 							<article className="px-4 py-8">
 								<MarkdownRenderer content={post.content} />
 							</article>
+							<BlogInteractions slug={slug} initialLikes={post.likes} />
 						</div>
 
 						{/* Sticky TOC sidebar */}
