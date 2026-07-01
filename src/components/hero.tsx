@@ -54,7 +54,11 @@ const Hero = async (props: { className: string }) => {
 					<p>{data.title}</p>
 				</div>
 				<div className="mt-3">
-					<StatusIndicator status={data.status || "available"} />
+					<StatusIndicator
+						status={data.status || "available"}
+						customLabel={(data as any).statusLabel}
+						customColor={(data as any).statusColor}
+					/>
 				</div>
 			</div>
 		</div>

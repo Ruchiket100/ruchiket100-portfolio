@@ -1,8 +1,14 @@
 interface StatusIndicatorProps {
 	status: string;
+	customLabel?: string;
+	customColor?: string;
 }
 
-export default function StatusIndicator({ status }: StatusIndicatorProps) {
+export default function StatusIndicator({
+	status,
+	customLabel,
+	customColor,
+}: StatusIndicatorProps) {
 	const statusMap: Record<string, { label: string; color: string }> = {
 		available: {
 			label: "Available for work",
@@ -16,9 +22,16 @@ export default function StatusIndicator({ status }: StatusIndicatorProps) {
 			label: "Busy",
 			color: "bg-red-500",
 		},
+		not_available: {
+			label: "Currently not available",
+			color: "bg-red-500",
+		},
 	};
 
-	const current = statusMap[status] || statusMap.available;
+	const current = statusMap[status] || {
+		label: customLabel || "Available for work",
+		color: customColor || "bg-emerald-500",
+	};
 
 	return (
 		<div className="flex items-center gap-2 text-xs border border-gray-300 px-3 py-1.5 w-fit">
