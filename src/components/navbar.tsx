@@ -81,7 +81,7 @@ export default function Navbar({ isBlogPage = false }: NavbarProps) {
 		<nav
 			className={`sticky top-0 z-50 flex items-center justify-between gap-4 px-4 py-3 transition-all duration-300 ${
 				isScrolled
-					? "bg-white/70 dark:bg-zinc-950/70 backdrop-blur-md border-b border-b-(--pattern-fg)/30 shadow-sm"
+					? "backdrop-blur-md border-b border-b-(--pattern-fg)/30 shadow-sm"
 					: isBlogPage
 					? "border-b border-b-(--pattern-fg)"
 					: ""
