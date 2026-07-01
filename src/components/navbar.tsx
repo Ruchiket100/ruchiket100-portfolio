@@ -72,7 +72,7 @@ export default function Navbar({ isBlogPage = false }: NavbarProps) {
 		const isActive = activeSection === sectionId;
 		return `hover:underline underline-offset-4 transition-colors duration-200 ${
 			isActive
-				? "underline font-bold text-black dark:text-white"
+				? "underline font-bold text-black"
 				: "text-zinc-500 hover:text-black dark:text-zinc-400 dark:hover:text-white"
 		}`;
 	};
