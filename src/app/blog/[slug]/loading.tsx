@@ -5,12 +5,9 @@ export default function Loading() {
 				{/* Decorative Border */}
 				<div className="relative -right-px col-start-2 row-span-full row-start-1 border-x border-x-(--pattern-fg) pointer-events-none"></div>
 
-				<div className="col-start-2 row-start-1 flex flex-col items-center justify-center min-h-[60vh] gap-4">
+				<div className="col-start-2 row-start-1 flex items-center justify-center min-h-[60vh]">
 					{/* Brutalist Rotating Square Loader */}
-					<div className="w-10 h-10 border-2 border-black dark:border-white animate-spin"></div>
-					<p className="text-xs text-gray-500 tracking-widest uppercase">
-						Loading post...
-					</p>
+					<div className="w-10 h-10 border-2 border-current animate-spin"></div>
 				</div>
 			</div>
 		</div>
