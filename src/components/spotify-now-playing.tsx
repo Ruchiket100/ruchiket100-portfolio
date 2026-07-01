@@ -99,12 +99,12 @@ export default function SpotifyNowPlaying() {
 			</div>
 
 			{/* Song Metadata (Single-line styling) */}
-			<div className="flex items-center gap-1.5 text-xs font-sans min-w-0">
-				<span className="font-bold text-black dark:text-white truncate max-w-[80px] sm:max-w-[120px] group-hover:text-[#1DB954] transition-colors">
+			<div className="flex items-center gap-1.5 text-xs font-sans min-w-0 text-black">
+				<span className="font-bold text-black truncate max-w-[80px] sm:max-w-[120px] group-hover:text-[#1DB954] transition-colors">
 					{song.title}
 				</span>
-				<span className="text-black dark:text-white shrink-0">•</span>
-				<span className="text-zinc-600 dark:text-zinc-400 truncate max-w-[70px] sm:max-w-[100px]">
+				<span className="text-black shrink-0">•</span>
+				<span className="text-zinc-700 truncate max-w-[70px] sm:max-w-[100px]">
 					{song.artist}
 				</span>
 			</div>
