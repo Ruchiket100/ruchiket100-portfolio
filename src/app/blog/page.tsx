@@ -5,6 +5,8 @@ import TransitionLink from "@/components/transition-link";
 import Navbar from "@/components/navbar";
 import BlogListClient from "./blog-list-client";
 
+export const dynamic = "force-dynamic";
+
 export const metadata: Metadata = {
 	title: "Blog — Ruchiket Borse",
 	description:

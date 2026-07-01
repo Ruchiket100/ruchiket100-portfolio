@@ -12,6 +12,8 @@ import Link from "next/link";
 import TransitionLink from "@/components/transition-link";
 import Navbar from "@/components/navbar";
 
+export const dynamic = "force-dynamic";
+
 async function getLatestPosts() {
 	try {
 		const snapshot = await db
