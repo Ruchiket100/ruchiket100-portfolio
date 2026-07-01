@@ -1,7 +1,5 @@
 import { db } from "@/lib/firebase";
 import type { Metadata } from "next";
-import Link from "next/link";
-import TransitionLink from "@/components/transition-link";
 import Navbar from "@/components/navbar";
 import BlogListClient from "./blog-list-client";
 

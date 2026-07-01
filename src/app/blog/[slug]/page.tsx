@@ -2,7 +2,6 @@ import { db } from "@/lib/firebase";
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import Link from "next/link";
-import TransitionLink from "@/components/transition-link";
 import MarkdownRenderer from "@/components/markdown-renderer";
 import TableOfContents from "@/components/table-of-contents";
 import BlogInteractions from "@/components/blog-interactions";

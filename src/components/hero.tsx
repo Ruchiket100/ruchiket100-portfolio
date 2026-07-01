@@ -1,8 +1,17 @@
 import { db } from "@/lib/firebase";
 import StatusIndicator from "./status-indicator";
 
+interface HeroData {
+	name: string;
+	title: string;
+	avatarUrl: string;
+	status: string;
+	statusLabel?: string;
+	statusColor?: string;
+}
+
 // Fallback data
-const fallbackHero = {
+const fallbackHero: HeroData = {
 	name: "Ruchiket Borse",
 	title: "React Developer",
 	avatarUrl:
@@ -10,11 +19,11 @@ const fallbackHero = {
 	status: "available",
 };
 
-async function getHeroData() {
+async function getHeroData(): Promise<HeroData> {
 	try {
 		const doc = await db.collection("hero").doc("main").get();
 		if (!doc.exists) return fallbackHero;
-		return doc.data() as typeof fallbackHero;
+		return doc.data() as HeroData;
 	} catch {
 		return fallbackHero;
 	}
@@ -56,8 +65,8 @@ const Hero = async (props: { className: string }) => {
 				<div className="mt-3">
 					<StatusIndicator
 						status={data.status || "available"}
-						customLabel={(data as any).statusLabel}
-						customColor={(data as any).statusColor}
+						customLabel={data.statusLabel}
+						customColor={data.statusColor}
 					/>
 				</div>
 			</div>

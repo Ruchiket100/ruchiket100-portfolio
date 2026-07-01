@@ -8,7 +8,6 @@ import ScrollReveal from "@/components/scroll-reveal";
 import ContactForm from "@/components/contact-form";
 import BlogCard from "@/components/blog-card";
 import { db } from "@/lib/firebase";
-import Link from "next/link";
 import TransitionLink from "@/components/transition-link";
 import Navbar from "@/components/navbar";
 
