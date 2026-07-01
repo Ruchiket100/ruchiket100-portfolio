@@ -69,7 +69,7 @@ export default function SpotifyNowPlaying() {
 			href={song.songUrl || "#"}
 			target="_blank"
 			rel="noopener noreferrer"
-			className="group relative flex items-center gap-2.5 transition-all duration-300 ease-in-out hover:opacity-75 select-none w-fit max-w-[220px] sm:max-w-xs cursor-pointer"
+			className="group relative flex items-center gap-2.5 rounded-full border border-gray-300 dark:border-zinc-700 px-3 py-1.5 hover:border-black dark:hover:border-white transition-all duration-300 ease-in-out select-none w-fit max-w-[220px] sm:max-w-xs cursor-pointer"
 		>
 			<style>{`
 				@keyframes eq-bar-1 { 0%, 100% { transform: scaleY(0.2); } 50% { transform: scaleY(1); } }
@@ -100,11 +100,11 @@ export default function SpotifyNowPlaying() {
 
 			{/* Song Metadata (Single-line styling) */}
 			<div className="flex items-center gap-1.5 text-xs font-sans min-w-0">
-				<span className="font-semibold text-zinc-900 dark:text-zinc-100 truncate max-w-[80px] sm:max-w-[120px] group-hover:text-[#1DB954]/90 transition-colors">
+				<span className="font-bold text-black dark:text-white truncate max-w-[80px] sm:max-w-[120px] group-hover:text-[#1DB954] transition-colors">
 					{song.title}
 				</span>
-				<span className="text-zinc-400 dark:text-zinc-600 shrink-0">•</span>
-				<span className="text-zinc-500 dark:text-zinc-400 truncate max-w-[70px] sm:max-w-[100px]">
+				<span className="text-black dark:text-white shrink-0">•</span>
+				<span className="text-zinc-600 dark:text-zinc-400 truncate max-w-[70px] sm:max-w-[100px]">
 					{song.artist}
 				</span>
 			</div>
