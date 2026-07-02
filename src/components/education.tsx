@@ -38,16 +38,16 @@ export default async function Education(props: { className?: string }) {
 				{entries.map((entry, idx) => (
 					<div
 						key={idx}
-						className="flex gap-3 items-center border-dashed border-gray-300 w-full h-full"
+						className="flex gap-3 items-center border-dashed border-border-dashed w-full h-full"
 					>
-						<div className="aspect-square flex items-center justify-center p-4 border-r border-dashed border-gray-300">
+						<div className="aspect-square flex items-center justify-center p-4 border-r border-dashed border-border-dashed">
 							<img className="h-8" src={entry.logo} alt={entry.institution} />
 						</div>
 						<div>
 							<h2 className="text-lg font-medium">{entry.degree}</h2>
 							<div className="flex items-center gap-4 text-xs">
 								{entry.field}
-								<hr className="h-4 w-[1px] bg-gray-300" />
+								<hr className="h-4 w-[1px] bg-border" />
 								{entry.period}
 							</div>
 						</div>

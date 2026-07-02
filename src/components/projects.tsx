@@ -49,8 +49,8 @@ export default async function Projects(props: { className?: string }) {
 		<div className={`flex flex-col gap-6 ${className}`}>
 			{entries.map((project, idx) => (
 				<div key={idx}>
-					<div className="flex gap-3 items-center border-b border-dashed border-gray-300 w-full h-full">
-						<div className="aspect-square p-4 border-r border-dashed border-gray-300">
+					<div className="flex gap-3 items-center border-b border-dashed border-border-dashed w-full h-full">
+						<div className="aspect-square p-4 border-r border-dashed border-border-dashed">
 							<svg
 								width="24px"
 								height="24px"
@@ -62,21 +62,21 @@ export default async function Projects(props: { className?: string }) {
 							>
 								<path
 									d="M12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2Z"
-									stroke="#000000"
+									stroke="currentColor"
 									strokeWidth="1.5"
 									strokeLinecap="round"
 									strokeLinejoin="round"
 								/>
 								<path
 									d="M8 21.1679V14L12 7L16 14V21.1679"
-									stroke="#000000"
+									stroke="currentColor"
 									strokeWidth="1.5"
 									strokeLinecap="round"
 									strokeLinejoin="round"
 								/>
 								<path
 									d="M8 14C8 14 9.12676 15 10 15C10.8732 15 12 14 12 14C12 14 13.1268 15 14 15C14.8732 15 16 14 16 14"
-									stroke="#000000"
+									stroke="currentColor"
 									strokeWidth="1.5"
 									strokeLinecap="round"
 									strokeLinejoin="round"
@@ -98,7 +98,7 @@ export default async function Projects(props: { className?: string }) {
 							{project.tags.map((tag, tagIdx) => (
 								<div
 									key={tagIdx}
-									className="border border-gray-300 text-xs px-2 py-1"
+									className="border border-border text-xs px-2 py-1"
 								>
 									{tag}
 								</div>

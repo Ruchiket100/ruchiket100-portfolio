@@ -1,9 +1,10 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import { usePathname } from "next/navigation";
 import TransitionLink from "./transition-link";
 import SpotifyNowPlaying from "./spotify-now-playing";
+import { useTheme } from "./theme-provider";
 
 interface NavbarProps {
 	isBlogPage?: boolean;
@@ -13,6 +14,26 @@ export default function Navbar({ isBlogPage = false }: NavbarProps) {
 	const pathname = usePathname();
 	const [activeSection, setActiveSection] = useState<string>("");
 	const [isScrolled, setIsScrolled] = useState(false);
+	const [isSettingsOpen, setIsSettingsOpen] = useState(false);
+	const { theme, setTheme, themes } = useTheme();
+	const dropdownRef = useRef<HTMLDivElement>(null);
+
+	useEffect(() => {
+		const handleClickOutside = (event: MouseEvent) => {
+			if (
+				dropdownRef.current &&
+				!dropdownRef.current.contains(event.target as Node)
+			) {
+				setIsSettingsOpen(false);
+			}
+		};
+		if (isSettingsOpen) {
+			document.addEventListener("mousedown", handleClickOutside);
+		}
+		return () => {
+			document.removeEventListener("mousedown", handleClickOutside);
+		};
+	}, [isSettingsOpen]);
 
 	useEffect(() => {
 		const handleScroll = () => {
@@ -72,8 +93,8 @@ export default function Navbar({ isBlogPage = false }: NavbarProps) {
 		const isActive = activeSection === sectionId;
 		return `hover:underline underline-offset-4 transition-colors duration-200 ${
 			isActive
-				? "underline font-bold text-black"
-				: "text-zinc-500 hover:text-black dark:text-zinc-400 dark:hover:text-black"
+				? "underline font-bold text-foreground"
+				: "text-text-muted hover:text-foreground"
 		}`;
 	};
 
@@ -81,10 +102,10 @@ export default function Navbar({ isBlogPage = false }: NavbarProps) {
 		<nav
 			className={`sticky top-0 z-50 flex items-center justify-between gap-4 px-4 py-3 border-b transition-all duration-300 ${
 				isScrolled
-					? "backdrop-blur-md border-b-(--pattern-fg)/30 shadow-sm"
+					? "backdrop-blur-md bg-background/80 border-border/30 shadow-sm"
 					: isBlogPage
-					? "border-b-(--pattern-fg)"
-					: "border-b-transparent"
+					? "border-border-dashed"
+					: "border-transparent"
 			}`}
 		>
 			<SpotifyNowPlaying />
@@ -125,49 +146,99 @@ export default function Navbar({ isBlogPage = false }: NavbarProps) {
 					</li>
 				</ul>
 				<div className="flex items-center gap-4">
-					<button className="p-1 border text-gray-500 border-gray-300 cursor-pointer">
-						<svg
-							width="20px"
-							height="20px"
-							viewBox="0 0 24 24"
-							strokeWidth="1.5"
-							fill="none"
-							xmlns="http://www.w3.org/2000/svg"
-							color="currentColor"
+					<div className="relative flex items-center" ref={dropdownRef}>
+						<button
+							onClick={() => setIsSettingsOpen(!isSettingsOpen)}
+							className={`p-1 border transition-all duration-150 cursor-pointer flex items-center justify-center ${
+								isSettingsOpen
+									? "text-accent border-accent bg-accent/10"
+									: "text-text-muted border-border hover:text-accent hover:border-accent"
+							}`}
+							aria-label="Settings"
 						>
-							<path
-								d="M3 22L3 2"
-								stroke="currentColor"
+							<svg
+								width="20px"
+								height="20px"
+								viewBox="0 0 24 24"
 								strokeWidth="1.5"
-								strokeLinecap="round"
-								strokeLinejoin="round"
-							></path>
-							<path
-								d="M21 22V2"
-								stroke="currentColor"
-								strokeWidth="1.5"
-								strokeLinecap="round"
-								strokeLinejoin="round"
-							></path>
-							<path
-								d="M15 16H9C7.89543 16 7 15.1046 7 14V10C7 8.89543 7.89543 8 9 8H15C16.1046 8 17 8.89543 17 10V14C17 15.1046 16.1046 16 15 16Z"
-								stroke="currentColor"
-								strokeWidth="1.5"
-							></path>
-						</svg>
-					</button>
+								fill="none"
+								xmlns="http://www.w3.org/2000/svg"
+								color="currentColor"
+							>
+								<path
+									d="M12 15a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z"
+									stroke="currentColor"
+									strokeWidth="1.5"
+									strokeLinecap="round"
+									strokeLinejoin="round"
+								/>
+								<path
+									d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 1 1-4 0v-.09a1.65 1.65 0 0 0-1-1.51 1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 1 1 0-4h.09a1.65 1.65 0 0 0 1.51-1 1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33 1.65 1.65 0 0 0 1-1.51V3a2 2 0 1 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82 1.65 1.65 0 0 0 1.51 1H21a2 2 0 1 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1Z"
+									stroke="currentColor"
+									strokeWidth="1.5"
+									strokeLinecap="round"
+									strokeLinejoin="round"
+								/>
+							</svg>
+						</button>
+
+						{isSettingsOpen && (
+							<div className="absolute right-0 top-full mt-2 w-56 rounded-none border border-border bg-background/95 backdrop-blur-md p-3 shadow-lg z-50 animate-[fadeInUp_0.15s_ease-out]">
+								<h3 className="text-[10px] font-bold uppercase tracking-wider text-text-muted mb-2 font-mono">
+									Preferences
+								</h3>
+								<div className="flex flex-col gap-2 font-mono text-[11px]">
+									<div className="text-[9px] text-text-muted font-bold uppercase mb-1">
+										Theme Colors
+									</div>
+									<div className="flex flex-col gap-1">
+										{Object.values(themes).map((t) => (
+											<button
+												key={t.id}
+												onClick={() => setTheme(t.id)}
+												className={`flex items-center justify-between p-1 border text-left transition-all duration-150 cursor-pointer ${
+													theme === t.id
+														? "border-foreground bg-border/10 font-bold"
+														: "border-transparent hover:bg-border/5"
+												}`}
+											>
+												<span>{t.name}</span>
+												<div className="flex gap-1">
+													<span
+														className="w-2.5 h-2.5 rounded-full border border-foreground/10"
+														style={{ backgroundColor: t.colors.bg }}
+														title="Background"
+													/>
+													<span
+														className="w-2.5 h-2.5 rounded-full border border-foreground/10"
+														style={{ backgroundColor: t.colors.accent }}
+														title="Accent"
+													/>
+													<span
+														className="w-2.5 h-2.5 rounded-full border border-foreground/10"
+														style={{ backgroundColor: t.colors.text }}
+														title="Text"
+													/>
+												</div>
+											</button>
+										))}
+									</div>
+								</div>
+							</div>
+						)}
+					</div>
 					<a
 						href="https://github.com/Ruchiket100"
 						target="_blank"
 						rel="noopener noreferrer"
-						className="p-1 border text-gray-500 border-gray-300 cursor-pointer"
+						className="p-1 border text-text-muted border-border hover:text-foreground hover:border-foreground transition-colors cursor-pointer flex items-center justify-center"
 					>
 						<svg
 							width="20px"
 							height="20px"
 							strokeWidth="1.5"
 							viewBox="0 0 24 24"
-							fill="white"
+							fill="none"
 							xmlns="http://www.w3.org/2000/svg"
 							color="currentColor"
 						>
@@ -187,25 +258,6 @@ export default function Navbar({ isBlogPage = false }: NavbarProps) {
 							></path>
 						</svg>
 					</a>
-					<button className="p-1 border text-gray-500 border-gray-300 cursor-pointer">
-						<svg
-							width="20px"
-							height="20px"
-							strokeWidth="1.5"
-							viewBox="0 0 24 24"
-							fill="white"
-							xmlns="http://www.w3.org/2000/svg"
-							color="currentColor"
-						>
-							<path
-								d="M3 11.5066C3 16.7497 7.25034 21 12.4934 21C16.2209 21 19.4466 18.8518 21 15.7259C12.4934 15.7259 8.27411 11.5066 8.27411 3C5.14821 4.55344 3 7.77915 3 11.5066Z"
-								stroke="currentColor"
-								strokeWidth="1.5"
-								strokeLinecap="round"
-								strokeLinejoin="round"
-							></path>
-						</svg>
-					</button>
 				</div>
 			</div>
 		</nav>

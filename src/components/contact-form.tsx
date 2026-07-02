@@ -75,7 +75,7 @@ export default function ContactForm() {
 								name: e.target.value,
 							}))
 						}
-						className="border border-gray-300 px-3 py-2 text-sm font-mono bg-white focus:outline-none focus:border-black transition-colors"
+						className="border border-border px-3 py-2 text-sm font-mono bg-background focus:outline-none focus:border-foreground transition-colors"
 						placeholder="Your name"
 					/>
 				</div>
@@ -98,7 +98,7 @@ export default function ContactForm() {
 								email: e.target.value,
 							}))
 						}
-						className="border border-gray-300 px-3 py-2 text-sm font-mono bg-white focus:outline-none focus:border-black transition-colors"
+						className="border border-border px-3 py-2 text-sm font-mono bg-background focus:outline-none focus:border-foreground transition-colors"
 						placeholder="you@example.com"
 					/>
 				</div>
@@ -121,7 +121,7 @@ export default function ContactForm() {
 								message: e.target.value,
 							}))
 						}
-						className="border border-gray-300 px-3 py-2 text-sm font-mono bg-white focus:outline-none focus:border-black transition-colors resize-none"
+						className="border border-border px-3 py-2 text-sm font-mono bg-background focus:outline-none focus:border-foreground transition-colors resize-none"
 						placeholder="Tell me about your project..."
 					/>
 				</div>
@@ -129,7 +129,7 @@ export default function ContactForm() {
 				<button
 					type="submit"
 					disabled={status === "loading"}
-					className="group relative border border-gray-900 bg-gray-900 text-white px-6 py-2.5 text-sm font-medium hover:bg-white hover:text-gray-900 transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
+					className="group relative border border-foreground bg-foreground text-background px-6 py-2.5 text-sm font-medium hover:bg-background hover:text-foreground transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer"
 				>
 					{status === "loading" ? (
 						<span className="flex items-center justify-center gap-2">

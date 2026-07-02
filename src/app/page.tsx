@@ -44,7 +44,7 @@ export default async function Home() {
 
 	return (
 		<div className="pt-4 font-mono">
-			<div className="relative grid grid-cols-[1fr_50vw_1fr] grid-rows-[repeat(60,1px_auto_1px_auto)] min-h-fit [--pattern-fg:var(--color-gray-950)]/5 dark:[--pattern-fg:var(--color-gray-950)]/10">
+			<div className="relative grid grid-cols-[1fr_50vw_1fr] grid-rows-[repeat(60,1px_auto_1px_auto)] min-h-fit [--pattern-fg:var(--theme-pattern)]">
 				<div className="sticky top-0 z-50 col-start-2 row-start-2 row-span-full h-fit w-[50vw] pointer-events-none">
 					<div className="pointer-events-auto">
 						<Navbar />
@@ -52,8 +52,8 @@ export default async function Home() {
 				</div>
 				<div className="relative -bottom-px col-span-full col-start-1 row-start-1 h-px bg-(--pattern-fg)"></div>
 				{/* <div className="relative -top-px col-span-full col-start-1 row-start-4 h-px bg-(--pattern-fg)"></div> */}
-				<div className="col-start-2 max-h-[500px] row-start-4 aspect-2/1 select-none sm:aspect-3/1 flex items-center justify-center text-black bg-black/0.75 bg-[radial-gradient(var(--pattern-fg)_1px,transparent_0)] bg-size-[16px_16px] bg-center [--pattern-fg:var(--color-zinc-950)]/5 dark:bg-white/0.75 dark:[--pattern-fg:var(--color-zinc-950)]/5">
-					<div>Ruchiket100</div>
+				<div className="col-start-2 max-h-[500px] row-start-4 aspect-2/1 select-none sm:aspect-3/1 flex items-center justify-center text-foreground bg-[radial-gradient(var(--pattern-fg)_1px,transparent_0)] bg-size-[16px_16px] bg-center border border-border">
+					<div className="text-xl font-bold uppercase tracking-wider">Ruchiket100</div>
 				</div>
 				<div className="relative -bottom-px col-span-full row-start-5  h-px bg-(--pattern-fg)"></div>
 				<Hero className="col-start-2 row-start-6" />

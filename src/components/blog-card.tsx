@@ -29,15 +29,15 @@ export default function BlogCard({
 
 	return (
 		<TransitionLink href={`/blog/${slug}`} className="group block">
-			<article className="border border-gray-300 hover:border-gray-900 transition-all duration-200 group-hover:-translate-y-0.5">
+			<article className="border border-border hover:border-foreground transition-all duration-200 group-hover:-translate-y-0.5">
 				<div className="p-4 flex flex-col gap-3">
-					<div className="flex items-center gap-3 text-xs text-gray-500">
+					<div className="flex items-center gap-3 text-xs text-text-muted">
 						{date && <time>{date}</time>}
 						{date && readingTime && (
-							<span className="w-px h-3 bg-gray-300" />
+							<span className="w-px h-3 bg-border" />
 						)}
 						<span>{readingTime} min read</span>
-						<span className="w-px h-3 bg-gray-300" />
+						<span className="w-px h-3 bg-border" />
 						<span>{views} views</span>
 					</div>
 
@@ -45,7 +45,7 @@ export default function BlogCard({
 						{title}
 					</h3>
 
-					<p className="text-sm text-gray-600 leading-relaxed line-clamp-2">
+					<p className="text-sm text-text-muted leading-relaxed line-clamp-2">
 						{excerpt}
 					</p>
 
@@ -53,7 +53,7 @@ export default function BlogCard({
 						{tags.map((tag) => (
 							<span
 								key={tag}
-								className="border border-gray-300 text-xs px-2 py-0.5"
+								className="border border-border text-xs px-2 py-0.5"
 							>
 								{tag}
 							</span>

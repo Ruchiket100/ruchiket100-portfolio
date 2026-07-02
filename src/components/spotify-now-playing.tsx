@@ -39,8 +39,8 @@ export default function SpotifyNowPlaying() {
 
 	if (loading) {
 		return (
-			<div className="flex items-center gap-2 pl-2 pr-2.5 py-1 text-xs font-sans rounded-full border border-gray-200 dark:border-zinc-800 text-zinc-400 dark:text-zinc-500 w-fit animate-pulse">
-				<div className="w-1.5 h-1.5 rounded-full bg-zinc-300 dark:bg-zinc-700"></div>
+			<div className="flex items-center gap-2 pl-2 pr-2.5 py-1 text-xs font-sans rounded-full border border-border text-text-muted w-fit animate-pulse">
+				<div className="w-1.5 h-1.5 rounded-full bg-border"></div>
 				<span className="hidden xs:inline">Connecting...</span>
 			</div>
 		);
@@ -48,18 +48,18 @@ export default function SpotifyNowPlaying() {
 
 	if (!song.isPlaying) {
 		return (
-			<div className="flex items-center gap-1.5 pl-2 pr-2.5 py-1 text-xs font-sans rounded-full border border-gray-200 dark:border-zinc-800 text-zinc-400 dark:text-zinc-500 w-fit select-none">
+			<div className="flex items-center gap-1.5 pl-2 pr-2.5 py-1 text-xs font-sans rounded-full border border-border text-text-muted w-fit select-none">
 				{/* Spotify Icon */}
 				<svg
 					width="14"
 					height="14"
 					viewBox="0 0 24 24"
 					fill="currentColor"
-					className="text-zinc-400 dark:text-zinc-600"
+					className="text-text-muted opacity-80"
 				>
 					<path d="M12 2C6.477 2 2 6.477 2 12s4.477 10 10 10 10-4.477 10-10S17.523 2 12 2zm4.586 14.424c-.18.295-.565.387-.86.207-2.377-1.454-5.37-1.783-8.892-.982-.336.076-.67-.135-.746-.47-.077-.337.135-.67.472-.747 3.847-.877 7.143-.5 9.815 1.135.295.18.387.563.206.857zm1.226-2.723c-.226.367-.707.487-1.074.26-2.72-1.672-6.87-2.157-10.076-1.183-.412.125-.85-.107-.975-.52-.125-.41.108-.85.52-.975 3.664-1.11 8.232-.573 11.344 1.343.368.226.488.707.26 1.075zm.107-2.82c-.27.443-.85.588-1.294.317-3.118-1.854-8.27-2.024-11.272-1.112-.5.15-1.025-.13-1.177-.63-.15-.5.13-1.026.63-1.178 3.567-1.082 9.243-.888 12.8 1.226.44.262.585.842.313 1.288z" />
 				</svg>
-				<span className="text-[10px] font-bold uppercase tracking-wider text-zinc-400 dark:text-zinc-600">Offline</span>
+				<span className="text-[10px] font-bold uppercase tracking-wider text-text-muted">Offline</span>
 			</div>
 		);
 	}
@@ -69,7 +69,7 @@ export default function SpotifyNowPlaying() {
 			href={song.songUrl || "#"}
 			target="_blank"
 			rel="noopener noreferrer"
-			className="group relative flex items-center gap-2 rounded-full border border-gray-300 dark:border-zinc-700 pl-2 pr-2.5 py-1 hover:border-black dark:hover:border-white hover:bg-zinc-50 dark:hover:bg-zinc-900/30 transition-all duration-200 ease-in-out select-none w-fit max-w-[220px] sm:max-w-xs cursor-pointer"
+			className="group relative flex items-center gap-2 rounded-full border border-border pl-2 pr-2.5 py-1 hover:border-foreground hover:bg-border/20 transition-all duration-200 ease-in-out select-none w-fit max-w-[220px] sm:max-w-xs cursor-pointer"
 		>
 			<style>{`
 				@keyframes eq-bar-1 { 0%, 100% { transform: scaleY(0.2); } 50% { transform: scaleY(1); } }
@@ -84,7 +84,7 @@ export default function SpotifyNowPlaying() {
 			`}</style>
 
 			{/* Album Art Cover (Rotating Vinyl) */}
-			<div className="relative w-5 h-5 shrink-0 rounded-full overflow-hidden shadow-inner ring-1 ring-black/5 dark:ring-white/10">
+			<div className="relative w-5 h-5 shrink-0 rounded-full overflow-hidden shadow-inner ring-1 ring-foreground/5">
 				{song.albumImageUrl ? (
 					<img
 						src={song.albumImageUrl}
@@ -92,19 +92,19 @@ export default function SpotifyNowPlaying() {
 						className="w-full h-full object-cover animate-[spin_12s_linear_infinite]"
 					/>
 				) : (
-					<div className="w-full h-full bg-zinc-200 dark:bg-zinc-800"></div>
+					<div className="w-full h-full bg-border"></div>
 				)}
 				{/* Vinyl center hole spacer */}
-				<div className="absolute inset-0 m-auto w-1 h-1 rounded-full bg-white dark:bg-zinc-900 border border-black/10"></div>
+				<div className="absolute inset-0 m-auto w-1 h-1 rounded-full bg-background border border-foreground/10"></div>
 			</div>
 
 			{/* Song Metadata (Single-line styling) */}
-			<div className="flex items-center gap-1.5 text-xs font-sans min-w-0 text-black leading-none">
-				<span className="font-bold text-black truncate max-w-[80px] sm:max-w-[120px] leading-none">
+			<div className="flex items-center gap-1.5 text-xs font-sans min-w-0 text-foreground leading-none">
+				<span className="font-bold text-foreground truncate max-w-[80px] sm:max-w-[120px] leading-none">
 					{song.title}
 				</span>
-				<span className="text-black shrink-0 leading-none">•</span>
-				<span className="text-zinc-700 truncate max-w-[70px] sm:max-w-[100px] leading-none">
+				<span className="text-foreground shrink-0 leading-none">•</span>
+				<span className="text-text-muted truncate max-w-[70px] sm:max-w-[100px] leading-none">
 					{song.artist}
 				</span>
 			</div>

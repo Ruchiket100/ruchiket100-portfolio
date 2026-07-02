@@ -128,16 +128,16 @@ export default function BlogInteractions({
 	};
 
 	return (
-		<div className="border-t border-dashed border-gray-300 mt-12 pt-8 px-4 font-mono">
+		<div className="border-t border-dashed border-border-dashed mt-12 pt-8 px-4 font-mono">
 			{/* Like Button Section */}
 			<div className="flex items-center gap-4 mb-8">
 				<button
 					onClick={handleLike}
 					disabled={isSubmittingLike}
-					className={`flex items-center gap-2 px-4 py-2 border transition-all duration-150 select-none ${
+					className={`flex items-center gap-2 px-4 py-2 border transition-all duration-150 select-none cursor-pointer ${
 						isLiked
-							? "bg-black text-white border-black dark:bg-white dark:text-black dark:border-white"
-							: "border-gray-300 hover:border-black dark:hover:border-white text-gray-700 dark:text-zinc-300"
+							? "bg-foreground text-background border-foreground"
+							: "border-border hover:border-foreground text-text-muted"
 					}`}
 				>
 					<svg
@@ -157,7 +157,7 @@ export default function BlogInteractions({
 			</div>
 
 			{/* Comments Section */}
-			<div className="border-t border-dashed border-gray-300 pt-8">
+			<div className="border-t border-dashed border-border-dashed pt-8">
 				<h3 className="text-lg font-sans font-bold mb-6">
 					Comments ({comments.length})
 				</h3>
@@ -170,7 +170,7 @@ export default function BlogInteractions({
 						</p>
 					)}
 					<div className="flex flex-col gap-1">
-						<label htmlFor="author" className="text-xs text-gray-500 uppercase tracking-widest">
+						<label htmlFor="author" className="text-xs text-text-muted uppercase tracking-widest">
 							Name
 						</label>
 						<input
@@ -181,11 +181,11 @@ export default function BlogInteractions({
 							placeholder="Your name"
 							maxLength={50}
 							required
-							className="border border-gray-300 dark:border-zinc-700 px-3 py-2 text-sm focus:outline-none focus:border-black dark:focus:border-white bg-transparent"
+							className="border border-border px-3 py-2 text-sm focus:outline-none focus:border-foreground bg-transparent"
 						/>
 					</div>
 					<div className="flex flex-col gap-1">
-						<label htmlFor="content" className="text-xs text-gray-500 uppercase tracking-widest">
+						<label htmlFor="content" className="text-xs text-text-muted uppercase tracking-widest">
 							Comment
 						</label>
 						<textarea
@@ -196,13 +196,13 @@ export default function BlogInteractions({
 							rows={4}
 							maxLength={1000}
 							required
-							className="border border-gray-300 dark:border-zinc-700 px-3 py-2 text-sm focus:outline-none focus:border-black dark:focus:border-white bg-transparent resize-y"
+							className="border border-border px-3 py-2 text-sm focus:outline-none focus:border-foreground bg-transparent resize-y"
 						></textarea>
 					</div>
 					<button
 						type="submit"
 						disabled={isSubmittingComment}
-						className="border border-gray-300 hover:border-black dark:hover:border-white text-sm py-2 px-4 select-none hover:bg-gray-50 dark:hover:bg-zinc-900 transition-colors w-fit self-start disabled:opacity-50"
+						className="border border-border hover:border-foreground text-sm py-2 px-4 select-none hover:bg-border/20 transition-colors w-fit self-start disabled:opacity-50 cursor-pointer"
 					>
 						{isSubmittingComment ? "Posting..." : "Submit Comment"}
 					</button>
@@ -215,7 +215,7 @@ export default function BlogInteractions({
 							<div className="w-6 h-6 border border-current border-t-transparent animate-spin"></div>
 						</div>
 					) : comments.length === 0 ? (
-						<p className="text-sm text-gray-500 py-4 text-center">
+						<p className="text-sm text-text-muted py-4 text-center">
 							No comments yet. Start the conversation!
 						</p>
 					) : (
@@ -233,15 +233,15 @@ export default function BlogInteractions({
 							return (
 								<div
 									key={comment.id}
-									className="border border-gray-300 dark:border-zinc-700 p-4 flex flex-col gap-2"
+									className="border border-border p-4 flex flex-col gap-2"
 								>
 									<div className="flex justify-between items-center text-xs">
-										<span className="font-semibold text-black dark:text-white">
+										<span className="font-semibold text-foreground">
 											{comment.author}
 										</span>
-										<time className="text-gray-500">{date}</time>
+										<time className="text-text-muted">{date}</time>
 									</div>
-									<p className="text-sm text-gray-700 dark:text-zinc-300 whitespace-pre-line leading-relaxed">
+									<p className="text-sm text-foreground whitespace-pre-line leading-relaxed">
 										{comment.content}
 									</p>
 								</div>

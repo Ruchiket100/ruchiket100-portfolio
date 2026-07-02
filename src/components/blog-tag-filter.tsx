@@ -15,10 +15,10 @@ export default function BlogTagFilter({
 		<div className="flex gap-2 flex-wrap">
 			<button
 				onClick={() => onTagSelect(null)}
-				className={`text-xs px-3 py-1 border transition-colors duration-200 ${
+				className={`text-xs px-3 py-1 border transition-colors duration-200 cursor-pointer ${
 					activeTag === null
-						? "bg-gray-900 text-white border-gray-900"
-						: "border-gray-300 hover:border-gray-900"
+						? "bg-foreground text-background border-foreground"
+						: "border-border hover:border-foreground"
 				}`}
 			>
 				All
@@ -27,10 +27,10 @@ export default function BlogTagFilter({
 				<button
 					key={tag}
 					onClick={() => onTagSelect(activeTag === tag ? null : tag)}
-					className={`text-xs px-3 py-1 border transition-colors duration-200 ${
+					className={`text-xs px-3 py-1 border transition-colors duration-200 cursor-pointer ${
 						activeTag === tag
-							? "bg-gray-900 text-white border-gray-900"
-							: "border-gray-300 hover:border-gray-900"
+							? "bg-foreground text-background border-foreground"
+							: "border-border hover:border-foreground"
 					}`}
 				>
 					{tag}

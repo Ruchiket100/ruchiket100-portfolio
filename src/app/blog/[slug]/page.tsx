@@ -115,7 +115,7 @@ export default async function BlogPostPage({
 
 	return (
 		<div className="pt-4 font-mono">
-			<div className="relative grid grid-cols-[1fr_50vw_1fr] min-h-screen [--pattern-fg:var(--color-gray-950)]/5 dark:[--pattern-fg:var(--color-gray-950)]/10">
+			<div className="relative grid grid-cols-[1fr_50vw_1fr] min-h-screen [--pattern-fg:var(--theme-pattern)]">
 				<div className="relative -right-px col-start-2 row-span-full row-start-1 border-x border-x-(--pattern-fg) pointer-events-none"></div>
 
 				<div className="col-start-2 row-start-1">
@@ -123,18 +123,18 @@ export default async function BlogPostPage({
 					<Navbar isBlogPage={true} />
 
 					{/* Post Header */}
-					<header className="px-4 py-8 border-b border-dashed border-gray-300">
-						<div className="flex items-center gap-3 text-xs text-gray-500 mb-3">
+					<header className="px-4 py-8 border-b border-dashed border-border-dashed">
+						<div className="flex items-center gap-3 text-xs text-text-muted mb-3">
 							{date && <time>{date}</time>}
-							<span className="w-px h-3 bg-gray-300" />
+							<span className="w-px h-3 bg-border" />
 							<span>{post.readingTime} min read</span>
-							<span className="w-px h-3 bg-gray-300" />
+							<span className="w-px h-3 bg-border" />
 							<span>{post.views} views</span>
 						</div>
 						<h1 className="text-3xl font-sans font-bold leading-tight">
 							{post.title}
 						</h1>
-						<p className="text-sm text-gray-500 mt-3 leading-relaxed">
+						<p className="text-sm text-text-muted mt-3 leading-relaxed">
 							{post.excerpt}
 						</p>
 						<div className="flex gap-2 flex-wrap mt-4">
@@ -142,7 +142,7 @@ export default async function BlogPostPage({
 								<Link
 									key={tag}
 									href={`/blog?tag=${tag}`}
-									className="border border-gray-300 text-xs px-2 py-0.5 hover:border-gray-900 transition-colors"
+									className="border border-border text-xs px-2 py-0.5 hover:border-foreground transition-colors"
 								>
 									{tag}
 								</Link>
@@ -160,7 +160,7 @@ export default async function BlogPostPage({
 						</div>
 
 						{/* Sticky TOC sidebar */}
-						<aside className="hidden lg:block w-56 shrink-0 border-l border-dashed border-gray-300">
+						<aside className="hidden lg:block w-56 shrink-0 border-l border-dashed border-border-dashed">
 							<div className="sticky top-4 p-4">
 								<TableOfContents content={post.content} />
 							</div>
@@ -172,9 +172,9 @@ export default async function BlogPostPage({
 						{prev ? (
 							<Link
 								href={`/blog/${prev.slug}`}
-								className="p-4 hover:bg-gray-50 transition-colors border-r border-dashed border-gray-300"
+								className="p-4 hover:bg-border/20 transition-colors border-r border-dashed border-border-dashed"
 							>
-								<span className="text-xs text-gray-500">
+								<span className="text-xs text-text-muted">
 									← Previous
 								</span>
 								<p className="text-sm font-medium mt-1 line-clamp-1">
@@ -187,9 +187,9 @@ export default async function BlogPostPage({
 						{next ? (
 							<Link
 								href={`/blog/${next.slug}`}
-								className="p-4 hover:bg-gray-50 transition-colors text-right"
+								className="p-4 hover:bg-border/20 transition-colors text-right"
 							>
-								<span className="text-xs text-gray-500">
+								<span className="text-xs text-text-muted">
 									Next →
 								</span>
 								<p className="text-sm font-medium mt-1 line-clamp-1">

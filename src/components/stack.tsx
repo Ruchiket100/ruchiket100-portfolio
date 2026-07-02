@@ -64,14 +64,14 @@ export default async function Stack(props: { className?: string }) {
 				{stackData.map((tech, i) => (
 					<div
 						key={i}
-						className="flex items-center text-sm border border-gray-300 hover:border-gray-900 transition-colors duration-200"
+						className="flex items-center text-sm border border-border hover:border-foreground transition-colors duration-200"
 					>
 						<img
 							className="w-10 aspect-square p-1"
 							src={tech.icon}
 							alt={tech.name}
 						/>
-						<span className="h-full w-[1px] bg-gray-300"></span>
+						<span className="h-full w-[1px] bg-border"></span>
 						<p className="px-1">{tech.name}</p>
 					</div>
 				))}

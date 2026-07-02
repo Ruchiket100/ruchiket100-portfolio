@@ -1,0 +1,67 @@
+{
+	"light": {
+		"id": "light",
+		"name": "Light Mode",
+		"colors": {
+			"bg": "#ffffff",
+			"text": "#000000",
+			"textMuted": "#71717a",
+			"border": "#d4d4d8",
+			"borderDashed": "#d4d4d8",
+			"pattern": "rgba(9, 9, 11, 0.04)",
+			"accent": "#1db954"
+		}
+	},
+	"dark": {
+		"id": "dark",
+		"name": "Dark Mode",
+		"colors": {
+			"bg": "#09090b",
+			"text": "#f4f4f5",
+			"textMuted": "#a1a1aa",
+			"border": "#3f3f46",
+			"borderDashed": "#3f3f46",
+			"pattern": "rgba(244, 244, 245, 0.05)",
+			"accent": "#1db954"
+		}
+	},
+	"solarized-dark": {
+		"id": "solarized-dark",
+		"name": "Solarized Dark",
+		"colors": {
+			"bg": "#002b36",
+			"text": "#839496",
+			"textMuted": "#586e75",
+			"border": "#0a4c5e",
+			"borderDashed": "#0a4c5e",
+			"pattern": "rgba(4, 52, 65, 0.2)",
+			"accent": "#268bd2"
+		}
+	},
+	"solarized-light": {
+		"id": "solarized-light",
+		"name": "Solarized Light",
+		"colors": {
+			"bg": "#fdf6e3",
+			"text": "#586e75",
+			"textMuted": "#93a1a1",
+			"border": "#eee8d5",
+			"borderDashed": "#eee8d5",
+			"pattern": "rgba(147, 161, 161, 0.15)",
+			"accent": "#268bd2"
+		}
+	},
+	"hacker-dark": {
+		"id": "hacker-dark",
+		"name": "Hacker Dark",
+		"colors": {
+			"bg": "#000000",
+			"text": "#39ff14",
+			"textMuted": "#00aa00",
+			"border": "#007700",
+			"borderDashed": "#007700",
+			"pattern": "rgba(0, 255, 0, 0.07)",
+			"accent": "#39ff14"
+		}
+	}
+}
