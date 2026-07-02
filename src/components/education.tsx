@@ -45,10 +45,10 @@ export default async function Education(props: { className?: string }) {
 						</div>
 						<div>
 							<h2 className="text-lg font-medium">{entry.degree}</h2>
-							<div className="flex items-center gap-4 text-xs">
-								{entry.field}
-								<hr className="h-4 w-[1px] bg-border" />
-								{entry.period}
+							<div className="flex flex-wrap items-center gap-x-3 gap-y-1 text-xs">
+								<span>{entry.field}</span>
+								<span className="hidden sm:inline text-border">|</span>
+								<span>{entry.period}</span>
 							</div>
 						</div>
 					</div>

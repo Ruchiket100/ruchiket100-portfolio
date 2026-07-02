@@ -15,6 +15,7 @@ export default function Navbar({ isBlogPage = false }: NavbarProps) {
 	const [activeSection, setActiveSection] = useState<string>("");
 	const [isScrolled, setIsScrolled] = useState(false);
 	const [isSettingsOpen, setIsSettingsOpen] = useState(false);
+	const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 	const { theme, setTheme, themes } = useTheme();
 	const dropdownRef = useRef<HTMLDivElement>(null);
 
@@ -110,8 +111,8 @@ export default function Navbar({ isBlogPage = false }: NavbarProps) {
 		>
 			<SpotifyNowPlaying />
 
-			<div className="flex items-center gap-6">
-				<ul className="flex gap-4 items-center font-medium text-sm">
+			<div className="flex items-center gap-4 md:gap-6">
+				<ul className="hidden md:flex gap-4 items-center font-medium text-sm">
 					<li>
 						<a
 							href={isBlogPage ? "/#about" : "#about"}
@@ -145,7 +146,7 @@ export default function Navbar({ isBlogPage = false }: NavbarProps) {
 						</a>
 					</li>
 				</ul>
-				<div className="flex items-center gap-4">
+				<div className="flex items-center gap-2 md:gap-4">
 					<div className="relative flex items-center" ref={dropdownRef}>
 						<button
 							onClick={() => setIsSettingsOpen(!isSettingsOpen)}
@@ -258,8 +259,69 @@ export default function Navbar({ isBlogPage = false }: NavbarProps) {
 							></path>
 						</svg>
 					</a>
+					<button
+						onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+						className="flex md:hidden p-1 border border-border text-text-muted hover:text-foreground hover:border-foreground transition-all duration-150 cursor-pointer items-center justify-center"
+						aria-label="Toggle Menu"
+					>
+						{isMobileMenuOpen ? (
+							<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+								<line x1="18" y1="6" x2="6" y2="18"></line>
+								<line x1="6" y1="6" x2="18" y2="18"></line>
+							</svg>
+						) : (
+							<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+								<line x1="3" y1="12" x2="21" y2="12"></line>
+								<line x1="3" y1="6" x2="21" y2="6"></line>
+								<line x1="3" y1="18" x2="21" y2="18"></line>
+							</svg>
+						)}
+					</button>
 				</div>
 			</div>
+
+			{isMobileMenuOpen && (
+				<div className="absolute left-0 right-0 top-full border-b border-border bg-background/95 backdrop-blur-md p-4 shadow-md z-40 flex flex-col gap-3 animate-[fadeInUp_0.15s_ease-out] md:hidden">
+					<ul className="flex flex-col gap-3 font-mono text-sm">
+						<li>
+							<a
+								href={isBlogPage ? "/#about" : "#about"}
+								className={getLinkClassName("about")}
+								onClick={() => setIsMobileMenuOpen(false)}
+							>
+								About
+							</a>
+						</li>
+						<li>
+							<a
+								href={isBlogPage ? "/#projects" : "#projects"}
+								className={getLinkClassName("projects")}
+								onClick={() => setIsMobileMenuOpen(false)}
+							>
+								Projects
+							</a>
+						</li>
+						<li>
+							<TransitionLink
+								href="/blog"
+								className={getLinkClassName("blog")}
+								onClick={() => setIsMobileMenuOpen(false)}
+							>
+								Blog
+							</TransitionLink>
+						</li>
+						<li>
+							<a
+								href={isBlogPage ? "/#contact" : "#contact"}
+								className={getLinkClassName("contact")}
+								onClick={() => setIsMobileMenuOpen(false)}
+							>
+								Contact
+							</a>
+						</li>
+					</ul>
+				</div>
+			)}
 		</nav>
 	);
 }

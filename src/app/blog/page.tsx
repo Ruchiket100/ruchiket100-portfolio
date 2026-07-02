@@ -54,7 +54,7 @@ export default async function BlogPage() {
 
 	return (
 		<div className="pt-4 font-mono">
-			<div className="relative grid grid-cols-[1fr_50vw_1fr] min-h-screen [--pattern-fg:var(--theme-pattern)]">
+			<div className="relative grid grid-cols-[1fr_92vw_1fr] md:grid-cols-[1fr_75vw_1fr] lg:grid-cols-[1fr_50vw_1fr] min-h-screen [--pattern-fg:var(--theme-pattern)]">
 				<div className="relative -right-px col-start-2 row-span-full row-start-1 border-x border-x-(--pattern-fg) pointer-events-none"></div>
 
 				<div className="col-start-2 row-start-1">

@@ -44,8 +44,8 @@ export default async function Home() {
 
 	return (
 		<div className="pt-4 font-mono">
-			<div className="relative grid grid-cols-[1fr_50vw_1fr] grid-rows-[repeat(60,1px_auto_1px_auto)] min-h-fit [--pattern-fg:var(--theme-pattern)]">
-				<div className="sticky top-0 z-50 col-start-2 row-start-2 row-span-full h-fit w-[50vw] pointer-events-none">
+			<div className="relative grid grid-cols-[1fr_92vw_1fr] md:grid-cols-[1fr_75vw_1fr] lg:grid-cols-[1fr_50vw_1fr] grid-rows-[repeat(60,1px_auto_1px_auto)] min-h-fit [--pattern-fg:var(--theme-pattern)]">
+				<div className="sticky top-0 z-50 col-start-2 row-start-2 row-span-full h-fit w-full pointer-events-none">
 					<div className="pointer-events-auto">
 						<Navbar />
 					</div>

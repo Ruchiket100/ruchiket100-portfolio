@@ -56,7 +56,7 @@ const Hero = async (props: { className: string }) => {
 					<div className="relative -right-px col-start-2 row-span-full row-start-1 border-x border-x-(--pattern-fg) bg-[image:repeating-linear-gradient(315deg,_var(--pattern-fg)_0,_var(--pattern-fg)_1px,_transparent_0,_transparent_50%)] bg-[size:10px_10px] bg-fixed"></div>
 					<div className="relative -left-px col-start-4 row-span-full row-start-1 border-x border-x-(--pattern-fg) bg-[image:repeating-linear-gradient(315deg,_var(--pattern-fg)_0,_var(--pattern-fg)_1px,_transparent_0,_transparent_50%)] bg-[size:10px_10px] bg-fixed"></div>
 				</div>
-				<h1 className="text-4xl font-sans py-1 font-extrabold">
+				<h1 className="text-3xl sm:text-4xl font-sans py-1 font-extrabold text-center">
 					{data.name}
 				</h1>
 				<div className="w-full text-center border-t border-gray-200">
